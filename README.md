@@ -45,3 +45,6 @@ The sinking of the Titanic is one of the most infamous shipwrecks in history. Th
 2. Ensure you have the following libraries installed:
    ```bash
    pip install pandas matplotlib seaborn numpy
+3.Open the Jupyter Notebook or run the Python script to reproduce the visualizations and analysis.
+
+Data Analysis by: siricodez
