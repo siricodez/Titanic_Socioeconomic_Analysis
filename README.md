@@ -1,37 +1,47 @@
-Titanic: Socio-Economic Survival Analysis
-This project performs a comprehensive exploratory data analysis (EDA) on the Titanic passenger manifest to determine how socio-economic status, gender, and family structures influenced survival rates during the 1912 disaster.
+# 🚢 Titanic Survival Analysis: Socio-Economic & Demographic Drivers
 
-📊 Executive Summary
-The analysis reveals that survival was not random but heavily dictated by institutional protocols ("women and children first") and socio-economic privilege.
+A comprehensive data science project exploring the factors that influenced survival outcomes during the 1912 Titanic disaster.
 
-Key Finding: There was an 83.3% survival gap between the most advantaged group (1st Class Females: 96.8%) and the least advantaged group (3rd Class Males: 13.5%).
+## 📌 Project Overview
+The sinking of the Titanic is one of the most infamous shipwrecks in history. This project analyzes the passenger manifest to determine which groups of people were more likely to survive, focusing on **Socio-Economic Status (Class)**, **Gender**, **Age**, and **Family Composition**.
 
-🛠️ Data Engineering & Cleaning
-Missing Values: Dropped the Cabin column (77.1% missing) and used median imputation for Age to ensure robustness against outliers.
+### Key Research Questions:
+* Did passenger class (wealth) act as a significant gateway to survival?
+* To what extent did the "women and children first" protocol manifest in the data?
+* Did traveling solo versus in a family group change a passenger's odds?
 
-Feature Engineering: Created high-signal variables including:
+## 📊 Dataset Summary
+* **Source:** Titanic Passenger Manifest (891 records)
+* **Target Variable:** `Survived` (Binary: 0 = No, 1 = Yes)
+* **Key Features:** Pclass, Sex, Age, SibSp, Parch, Fare, and Title (Engineered).
+* **Baseline Survival Rate:** ~38.4%
 
-Title: Extracted from names to capture social status beyond just passenger class.
+## 🛠️ Technical Workflow
+1.  **Exploratory Data Analysis (EDA):** Identified missing values in `Age` (19.9%) and `Cabin` (77.1%).
+2.  **Data Cleaning:**
+    * Dropped the sparse `Cabin` column.
+    * Imputed `Age` using the **median** to remain robust against outliers.
+    * Imputed `Embarked` using the **mode**.
+3.  **Feature Engineering:**
+    * **Title Extraction:** Extracted social titles (Mr, Mrs, Master, etc.) from names.
+    * **Family Grouping:** Created categories for Solo, Small (2–4), and Large (5+) families.
+    * **Life Stage Buckets:** Segmented passengers into Minor, Adult, and Senior.
+4.  **Visualization:** Utilized Matplotlib and Seaborn for correlation heatmaps, survival matrices, and distribution plots.
 
-FamilyGroup: Categorized passengers into Solo, Small (2–4), and Large (5+) cohorts.
+## 📈 Key Insights
+* **The Gender Gap:** Women had **3.9x higher odds** of survival than men (74.2% vs 18.9%).
+* **Socio-Economic Disparity:** 1st Class passengers had a **63% survival rate**, while 3rd Class passengers only had **24.2%**.
+* **The "Sweet Spot" for Families:** Small families (2-4 members) had the highest survival rate (**57.9%**), suggesting a coordination advantage. Large families (5+) struggled significantly (**16.1%**).
+* **The Ultimate Advantage:** A **1st Class Female** had a **96.8%** chance of survival, whereas a **3rd Class Male** had only a **13.5%** chance.
 
-AgeGroup: Categorized by life stage (Minor, Adult, Senior).
 
-📈 Key Insights
-Gender: Women survived at a rate of 74.2% compared to just 18.9% for men.
 
-Class (SES): 1st Class passengers had a 63.0% survival rate, while 3rd Class passengers had only 24.2%.
+## 💡 Strategic Recommendations
+* **Equitable Access:** Analysis suggests a ~39% survival gap between classes driven by deck proximity. Future safety designs should prioritize standardized lifeboat access across all tiers.
+* **Coordinated Evacuation:** Data shows small groups fare better than individuals. Emergency protocols should focus on family-unit evacuation to improve coordination and speed.
 
-Family Dynamics: Small families (2–4 members) showed a "coordination advantage," achieving higher survival rates than solo travelers or very large families.
-
-Age: Minors had a clear survival advantage, consistent with emergency evacuation priority.
-
-🚀 Recommendations
-Infrastructure: Standardize lifeboat access across all deck tiers to close the 39-point survival gap between 1st and 3rd class.
-
-Protocols: Implement evacuation strategies that support family coordination, as small groups showed higher resilience.
-
-📂 Project Structure
-Titanic_Socioeconomic_Analysis.ipynb: The complete Python analysis including data cleaning, feature engineering, and Seaborn/Matplotlib visualizations.
-
-README.md: Project overview and summary of findings.
+## 🚀 How to Run
+1. Clone this repository.
+2. Ensure you have the following libraries installed:
+   ```bash
+   pip install pandas matplotlib seaborn numpy
